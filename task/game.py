@@ -17,18 +17,6 @@ def possible_errors(p):
 
 
 def jack_strategy(jack_pen):
-    jack_step = 0
-    if jack_pen % 4 == 2:
-        jack_step = 1
-        print(jack_step)
-    elif jack_pen % 4 == 3:
-        jack_step = 2
-        print(jack_step)
-    elif jack_pen % 4 == 0:
-        jack_step = 3
-        print(jack_step)
-    print(pencil_to_use * (jack_pen - jack_step))
-    jack_pen -= jack_step
     while jack_pen != 0:
         print("John's turn!")
         a = possible_errors(jack_pen)
@@ -54,50 +42,6 @@ def jack_strategy(jack_pen):
             jack_pen -= jack_step
 
 
-def john_strategy(j_pencils):
-    while True:
-        print("John's turn!")
-        a_j = possible_errors(j_pencils)
-        print(pencil_to_use * (j_pencils - a_j))
-        j_pencils -= a_j
-        if j_pencils == 1:
-            print("Jack's turn:")
-            print("1")
-            print("John won!")
-            break
-        elif j_pencils == 3:
-            print("Jack's turn:", "2", sep="\n")
-            j_pencils -= 2
-            print(pencil_to_use * j_pencils)
-            print("John's turn!")
-            possible_errors(j_pencils)
-            print("Jack won!")
-            break
-        elif j_pencils == 2:
-            print("Jack's turn:", "1", sep="\n")
-            j_pencils -= 1
-            print(pencil_to_use * j_pencils)
-            print("John's turn!")
-            possible_errors(j_pencils)
-            print("Jack won!")
-            break
-        elif j_pencils == 4:
-            print("Jack's turn:", "3", sep="\n")
-            j_pencils -= 3
-            print(pencil_to_use * j_pencils)
-            print("John's turn!")
-            possible_errors(j_pencils)
-            print("Jack won!")
-            break
-        elif j_pencils == 0:
-            print("Jack won!")
-            break
-        else:
-            print("Jack's turn:")
-            jack_strategy(j_pencils)
-            break
-
-
 pencils = 0
 pencil_to_use = "|"
 print('How many pencils would you like to use:')
@@ -114,7 +58,6 @@ while True:
         break
 print("Who will be the first (John, Jack):")
 players = ['John', 'Jack']
-step = 0
 while True:
     player = input()
     if player in players:
@@ -123,12 +66,45 @@ while True:
     else:
         print("Choose between 'John' and 'Jack'")
         continue
-if player == "John":
-    john_strategy(pencils)
-else:
+
+
+while True:
+    if pencils == 0:
+        print(f'{player} won!')
+        break
     if pencils == 1:
         print("Jack's turn:")
         print("1")
         print("John won!")
+        break
+    if player == "Jack":
+        print(f'{player}\'s turn:')
+        if pencils == 2 or pencils % 4 == 2:
+            print("1")
+            pencils -= 1
+            print(pencil_to_use * pencils)
+            jack_strategy(pencils)
+            break
+        elif pencils == 3 or pencils % 4 == 3:
+            print("2")
+            pencils -= 2
+            print(pencil_to_use * pencils)
+            jack_strategy(pencils)
+            break
+        elif pencils == 4 or pencils % 4 == 0:
+            print("3")
+            pencils -= 3
+            print(pencil_to_use * pencils)
+            jack_strategy(pencils)
+            break
+        elif pencils % 4 == 1:
+            print("2")
+            pencils -= 2
+            print(pencil_to_use * pencils)
+            player = "John"
     else:
-        jack_strategy(pencils)
+        print('John\'s turn:')
+        step = possible_errors(pencils)
+        pencils -= step
+        print(pencil_to_use * pencils)
+        player = "Jack"

@@ -417,7 +417,7 @@ feedback:
     \ use:\n> 9\nWho will be the first (John, Jack):\n> JohnJack\nChoose between 'John'\
     \ and 'Jack'\n> JohnJack\nChoose between 'John' and 'Jack'\n> JohnJack\nChoose\
     \ between 'John' and 'Jack'\n> JohnJack\nChoose between 'John' and 'Jack'\n> JohnJack\n\
-    Choose between 'John' and 'Jack'\n> John\n|||||||||\nJohn's turn!\n> 4\nPossible\
+    Choose between 'John' and 'Jack'\n> John\n|||||||||\nJohn's turn:\n> 4\nPossible\
     \ values: '1', '2' or '3'\n> a\nPossible values: '1', '2' or '3'\n> 0\nPossible\
     \ values: '1', '2' or '3'\n> -1\nPossible values: '1', '2' or '3'\n> _\nPossible\
     \ values: '1', '2' or '3'\n> |\nPossible values: '1', '2' or '3'\n> |||||\nPossible\
@@ -425,7 +425,7 @@ feedback:
     > 4\nPossible values: '1', '2' or '3'\n> a\nPossible values: '1', '2' or '3'\n\
     > 0\nPossible values: '1', '2' or '3'\n> -1\nPossible values: '1', '2' or '3'\n\
     > _\nPossible values: '1', '2' or '3'\n> |\nPossible values: '1', '2' or '3'\n\
-    > |||||\nPossible values: '1', '2' or '3'\n> 3\n||\nJack's turn: \n 1\n|\nJohn's\
+    > |||||\nPossible values: '1', '2' or '3'\n> 2\n|||\nJack's turn: \n 2\n|\nJohn's\
     \ turn!"
-  time: Wed, 07 Sep 2022 09:57:36 UTC
+  time: Wed, 07 Sep 2022 19:41:03 UTC
 record: -1
