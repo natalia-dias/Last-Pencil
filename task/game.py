@@ -72,38 +72,46 @@ while True:
     if pencils == 0:
         print(f'{player} won!')
         break
-    if pencils == 1:
-        print("Jack's turn:")
-        print("1")
-        print("John won!")
-        break
     if player == "Jack":
-        print(f'{player}\'s turn:')
-        if pencils == 2 or pencils % 4 == 2:
+        if pencils == 1:
+            print("Jack's turn:")
+            print("1")
+            print("John won!")
+            break
+        elif pencils == 2 or pencils % 4 == 2:
+            print("Jack's turn:")
             print("1")
             pencils -= 1
             print(pencil_to_use * pencils)
             jack_strategy(pencils)
             break
         elif pencils == 3 or pencils % 4 == 3:
+            print("Jack's turn:")
             print("2")
             pencils -= 2
             print(pencil_to_use * pencils)
             jack_strategy(pencils)
             break
         elif pencils == 4 or pencils % 4 == 0:
+            print("Jack's turn:")
             print("3")
             pencils -= 3
             print(pencil_to_use * pencils)
             jack_strategy(pencils)
             break
         elif pencils % 4 == 1:
+            print("Jack's turn:")
             print("2")
             pencils -= 2
             print(pencil_to_use * pencils)
             player = "John"
     else:
-        print('John\'s turn:')
+        if pencils == 1:
+            print("John's turn!")
+            step = possible_errors(pencils)
+            print("Jack won!")
+            break
+        print('John\'s turn!')
         step = possible_errors(pencils)
         pencils -= step
         print(pencil_to_use * pencils)
