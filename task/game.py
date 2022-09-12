@@ -1,118 +1,105 @@
-def possible_errors(p):
-    values = [1, 2, 3]
-    _step = 0
-    while True:
-        try:
-            _step = int(input())
-        except ValueError:
-            print("Possible values: '1', '2' or '3'")
-            continue
-        if _step not in values:
-            print("Possible values: '1', '2' or '3'")
-        elif _step > p:
-            print("Too many pencils were taken")
-            continue
-        else:
-            return _step
+import random
 
+# find out who is playing who
+# declare out global vars
+names = ["John", "Jack"]
+k = 1
+s_ = "'s turn!"
+one_pencil = "|"
+first_name = 0
 
-def jack_strategy(jack_pen):
-    while jack_pen != 0:
-        print("John's turn!")
-        a = possible_errors(jack_pen)
-        print(pencil_to_use * (jack_pen - a))
-        jack_pen -= a
-        if jack_pen == 0:
-            print("Jack won!")
-            break
-        if a == 1:
-            jack_step = 3
-            print("Jack's turn: \n", jack_step)
-            print(pencil_to_use * (jack_pen - jack_step))
-            jack_pen -= jack_step
-        elif a == 2:
-            jack_step = 2
-            print("Jack's turn: \n", jack_step)
-            print(pencil_to_use * (jack_pen - jack_step))
-            jack_pen -= jack_step
-        elif a == 3:
-            jack_step = 1
-            print("Jack's turn: \n", jack_step)
-            print(pencil_to_use * (jack_pen - jack_step))
-            jack_pen -= jack_step
+# find out the starting amount of pencils on the table
+print("How many pencils would you like to use:")
+pencils = input()
 
-
-pencils = 0
-pencil_to_use = "|"
-print('How many pencils would you like to use:')
-while True:
-    try:
-        pencils = int(input())
-    except ValueError:
+# isnumeric() just checks if the str.pencils is a numeral (number)
+while pencils.isnumeric() is False or pencils == "0":
+    # if it is not a number
+    if pencils.isnumeric() is False:
         print("The number of pencils should be numeric")
-        continue
-    if pencils <= 0:
+        pencils = input()
+    # 0 is not positive and is not accepted
+    elif pencils == "0":
         print("The number of pencils should be positive")
-        continue
-    else:
-        break
-print("Who will be the first (John, Jack):")
-players = ['John', 'Jack']
-while True:
-    player = input()
-    if player in players:
-        print(pencil_to_use * pencils)
-        break
-    else:
-        print("Choose between 'John' and 'Jack'")
-        continue
+        pencils = input()
 
+# python wants us to be explicit right?
+pencils = int(pencils)
 
-while True:
-    if pencils == 0:
-        print(f'{player} won!')
-        break
-    if player == "Jack":
-        if pencils == 1:
-            print("Jack's turn:")
-            print("1")
-            print("John won!")
-            break
-        elif pencils == 2 or pencils % 4 == 2:
-            print("Jack's turn:")
-            print("1")
-            pencils -= 1
-            print(pencil_to_use * pencils)
-            jack_strategy(pencils)
-            break
-        elif pencils == 3 or pencils % 4 == 3:
-            print("Jack's turn:")
-            print("2")
-            pencils -= 2
-            print(pencil_to_use * pencils)
-            jack_strategy(pencils)
-            break
-        elif pencils == 4 or pencils % 4 == 0:
-            print("Jack's turn:")
-            print("3")
-            pencils -= 3
-            print(pencil_to_use * pencils)
-            jack_strategy(pencils)
-            break
-        elif pencils % 4 == 1:
-            print("Jack's turn:")
-            print("2")
-            pencils -= 2
-            print(pencil_to_use * pencils)
-            player = "John"
+# let's ask who is going first
+print("Who will be the first (" + names[0] + ", " + names[1] + "):")
+first_name = input()
+
+# if the input is not in the names list? retry
+while first_name not in names:
+    print("Choose between", names[0], "and", names[1])
+    first_name = input()
+
+# |||||||
+print(pencils * one_pencil)
+
+# now lets start the game until we have no more pencils
+while pencils > 0:
+
+    if first_name == names[0]:
+
+        print(names[0] + s_)
+        # ask the next player to choose a number between 1-3
+        # pencils_2 is our removed amount
+        pencils_2 = input()
+
+        while pencils_2 == "0" or pencils_2.isnumeric() is False or int(pencils_2) > 3 or int(pencils_2) > pencils:
+            # we only accept 1 2 or 3
+            if pencils_2 == "0" or pencils_2.isnumeric() is False:
+                print("Possible values: '1', '2' or '3'")
+                pencils_2 = input()
+            # you can only take so many pencils, remind the user
+            elif int(pencils_2) > 3:
+                # if removal amount is greater than 3 AND greater than the remaining amount
+                if int(pencils_2) > 3 and int(pencils_2) > pencils:
+                    print("Too many pencils were taken")
+                    print("Possible values: '1', '2' or '3'")
+                    pencils_2 = input()
+                # if the removal amount is greater than 3 and less than remaining amount
+                elif 3 < int(pencils_2) < pencils:
+                    print("Too many pencils were taken")
+                    print("Possible values: '1', '2' or '3'")
+                    pencils_2 = input()
+                # if the removal amount is greater than 3 and equal to the remaining amount
+                elif int(pencils_2) > 3 and int(pencils_2) == pencils:
+                    print("Too many pencils were taken")
+                    print("Possible values: '1', '2' or '3'")
+                    pencils_2 = input()
+            # if the removal amount is within the parameters but is greater than the remaining amount
+            elif int(pencils_2) > pencils:
+                print("Too many pencils were taken")
+                pencils_2 = input()
+        # subtracting the removal amount from the remaining amount
+        pencils -= int(pencils_2)
+        print(pencils * one_pencil)
+        first_name = names[1]
     else:
-        if pencils == 1:
-            print("John's turn!")
-            step = possible_errors(pencils)
-            print("Jack won!")
-            break
-        print('John\'s turn!')
-        step = possible_errors(pencils)
-        pencils -= step
-        print(pencil_to_use * pencils)
-        player = "Jack"
+        # the second player (the bot) turn
+        print(names[1] + "'s turn:")
+        # the rudimentary AI logic
+        if pencils % 4 == 0:
+            pencils_2 = 3
+        elif pencils % 4 == 3:
+            pencils_2 = 2
+        elif pencils % 4 == 2:
+            pencils_2 = 1
+        elif pencils == 1:
+            pencils_2 = 1
+        else:
+            pencils_2 = random.randint(1, 3)
+
+        pencils -= int(pencils_2)
+        print(pencils_2)
+        print(pencils * one_pencil)
+        first_name = names[0]
+
+# have to let the winner know they won right?
+if first_name == names[0]:
+    print(names[0], "won!")
+else:
+    print(names[1], "won!")
