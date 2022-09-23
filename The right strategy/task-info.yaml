@@ -407,25 +407,9 @@ files:
         LastPencilTest().run_tests()
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/20067#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #20\n\nAfter inputting number of pencils, that John\
-    \ has taken- there should be printed 5 non-empty lines, third of them is John's\
-    \ turn, so it should be either '1', '2' or '3'\n\nPlease find below the output\
-    \ of your program during this failed test.\nNote that the '>' character indicates\
-    \ the beginning of the input line.\n\n---\n\nHow many pencils would you like to\
-    \ use:\n> 9\nWho will be the first (John, Jack):\n> JohnJack\nChoose between 'John'\
-    \ and 'Jack'\n> JohnJack\nChoose between 'John' and 'Jack'\n> JohnJack\nChoose\
-    \ between 'John' and 'Jack'\n> JohnJack\nChoose between 'John' and 'Jack'\n> JohnJack\n\
-    Choose between 'John' and 'Jack'\n> John\n|||||||||\nJohn's turn!\n> 4\nPossible\
-    \ values: '1', '2' or '3'\n> a\nPossible values: '1', '2' or '3'\n> 0\nPossible\
-    \ values: '1', '2' or '3'\n> -1\nPossible values: '1', '2' or '3'\n> _\nPossible\
-    \ values: '1', '2' or '3'\n> |\nPossible values: '1', '2' or '3'\n> |||||\nPossible\
-    \ values: '1', '2' or '3'\n> 3\n||||||\nJack's turn:\n1\n|||||\nJohn's turn!\n\
-    > 4\nPossible values: '1', '2' or '3'\n> a\nPossible values: '1', '2' or '3'\n\
-    > 0\nPossible values: '1', '2' or '3'\n> -1\nPossible values: '1', '2' or '3'\n\
-    > _\nPossible values: '1', '2' or '3'\n> |\nPossible values: '1', '2' or '3'\n\
-    > |||||\nPossible values: '1', '2' or '3'\n> 3\n||\nJack's turn: \n 1\n|\nJohn's\
-    \ turn!"
-  time: Thu, 08 Sep 2022 09:04:55 UTC
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Fri, 23 Sep 2022 13:45:10 UTC
 record: -1

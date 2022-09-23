@@ -1,3 +1,4 @@
+# function that prevents errors with number of taken pencils (== _step)
 def possible_errors(p):
     values = [1, 2, 3]
     _step = 0
@@ -16,6 +17,8 @@ def possible_errors(p):
             return _step
 
 
+# winning strategy for bot. Is used in case of Jack's first step
+# and in case John lets winning combination for the bot
 def jack_strategy(jack_pen):
     while jack_pen != 0:
         print("John's turn!")
@@ -27,23 +30,28 @@ def jack_strategy(jack_pen):
             break
         if a == 1:
             jack_step = 3
-            print("Jack's turn: \n", jack_step)
+            print("Jack's turn:")
+            print(jack_step)
             print(pencil_to_use * (jack_pen - jack_step))
             jack_pen -= jack_step
         elif a == 2:
             jack_step = 2
-            print("Jack's turn: \n", jack_step)
+            print("Jack's turn:")
+            print(jack_step)
             print(pencil_to_use * (jack_pen - jack_step))
             jack_pen -= jack_step
         elif a == 3:
             jack_step = 1
-            print("Jack's turn: \n", jack_step)
+            print("Jack's turn:")
+            print(jack_step)
             print(pencil_to_use * (jack_pen - jack_step))
             jack_pen -= jack_step
 
 
 pencils = 0
 pencil_to_use = "|"
+
+# 1st fase: number of pencils
 print('How many pencils would you like to use:')
 while True:
     try:
@@ -56,6 +64,8 @@ while True:
         continue
     else:
         break
+
+# 2nd fase: players chose and avoidance of possible errors
 print("Who will be the first (John, Jack):")
 players = ['John', 'Jack']
 while True:
@@ -67,7 +77,7 @@ while True:
         print("Choose between 'John' and 'Jack'")
         continue
 
-
+# 3rd fase: game
 while True:
     if pencils == 0:
         print(f'{player} won!')
